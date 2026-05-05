@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Bot Feature Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f7fb; color: #1f2937; }
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 32px; }
+    h1, h2, h3 { color: #111827; }
+    h1 { margin-bottom: 0.3em; }
+    p { margin: 0.8em 0; }
+    ul { margin: 0.6em 0 1.2em 1.4em; }
+    .card { background: #ffffff; border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; margin-bottom: 24px; }
+    .label { display: inline-block; background: #e2e8f0; color: #0f172a; border-radius: 999px; padding: 6px 12px; font-size: 0.9rem; margin-top: 8px; }
+    .note { background: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; }
+    .command-name { font-weight: 700; }
+    .feature-group { margin-bottom: 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <article class="card">
+      <h1>Yummi Feature Summary</h1>
+      <p>This repository contains a Discord bot primarily designed for League of Legends stats/nickname management, recruitment posts, and message pinning.</p>    
+    </article>
+
+    <section class="card">
+      <h2>1. Key Features</h2>
+      <div class="feature-group">
+        <h3>1.1 League of Legends Info Lookup</h3>
+        <ul>
+          <li><strong>/info</strong>: Displays summoner tier (Solo/Flex), level, and top champion mastery information.</li>
+          <li><strong>/mastery</strong>: Shows the champion mastery list and top data for a user or a specific LoL nickname using a paginated UI.</li>
+          <li><strong>/rotation</strong>: Generates and sends an image of the current week's free champion rotation.</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>1.2 Nickname Management</h3>
+        <ul>
+          <li><strong>/set_nickname</strong>: Registers a Riot nickname and saves it to the database.</li>
+          <li><strong>/delete_nickname</strong>: Deletes your own registered nickname.</li>
+          <li><strong>/nickname</strong>: Look up your own or another user's registered LoL nickname.</li>
+          <li><strong>/secret_nick</strong>: Sends the lookup result as an ephemeral message (visible only to you).</li>
+          <li><strong>/vc_nicknames</strong>: Checks the registered nicknames of all members currently in the voice channel at once.</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>1.3 Chat & Recruitment Helper</h3>
+        <ul>
+          <li><strong>/aram</strong>: Generates a recruitment message for ARAM game members.</li>
+          <li>Recruitment messages include interactive buttons for <strong>Join</strong>, <strong>Reserve</strong>, <strong>Cancel Join</strong>, <strong>Cancel Recruitment</strong>, and <strong>Bump</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>1.4 Message Pinning</h3>
+        <ul>
+          <li><strong>!pin</strong>: A feature that pins a replied message and "bumps" it by sending a copy as a new message.</li>
+          <li><strong>!unpin</strong>: Disables the pinned status of a message.</li>
+          <li>The pinning feature copies the original message content, embeds, and buttons to maintain a pinned replica.</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>1.5 Admin & Backup</h3>
+        <ul>
+          <li><strong>Bot Lock</strong> (<strong>/bot_lock</strong>): Allows administrators to lock or unlock bot usage.</li>
+          <li><strong>reload</strong>, <strong>reloadall</strong>: Admin-only commands to reload bot extension modules.</li>
+          <li>The log and backup module backs up the DB to an Excel file every hour and records member counts per server.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Core Data Storage</h2>
+      <ul>
+        <li><strong>nicknames</strong> table: Discord User ID, Riot Nickname, Tier, and Last Update Time.</li>
+        <li><strong>teams</strong> table: Server ID, Team Name, Leader ID, Member List (JSON), Team Status, Creation Time, and Voice Channel ID.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>3. Requirements</h2>
+      <ul>
+        <li>Python 3.x</li>
+        <li>discord.py and related extensions</li>
+        <li>aiohttp, Pillow, openpyxl, python-dotenv, etc.</li>
+        <li>Environment variables such as <code>DISCORD_TOKEN</code>, <code>RIOT_API_KEY</code>, <code>ADMIN_ID</code>, and <code>ALLOWED_GUILD_IDS</code> must be configured in a <strong>.env</strong> file.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4. How to Run</h2>
+      <p>Run the bot using <code>python main.py</code>.</p>
+      <p><strong>main.py</strong> initializes the bot and automatically loads modules from directories.</p>
+    </section>
+  </div>
+</body>
+</html>
