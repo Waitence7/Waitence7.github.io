@@ -1,102 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Bot Feature Summary</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Yummi는 League of Legends Discord 서버를 위한 모집, 전적, 내전, 대회 및 LCU 연동 도구입니다." />
+  <title>Yummi — League of Legends Discord Companion</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f7fb; color: #1f2937; }
-    .wrapper { max-width: 900px; margin: 0 auto; padding: 32px; }
-    h1, h2, h3 { color: #111827; }
-    h1 { margin-bottom: 0.3em; }
-    p { margin: 0.8em 0; }
-    ul { margin: 0.6em 0 1.2em 1.4em; }
-    .card { background: #ffffff; border-radius: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); padding: 24px; margin-bottom: 24px; }
-    .label { display: inline-block; background: #e2e8f0; color: #0f172a; border-radius: 999px; padding: 6px 12px; font-size: 0.9rem; margin-top: 8px; }
-    .note { background: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; }
-    .command-name { font-weight: 700; }
-    .feature-group { margin-bottom: 18px; }
+    :root{color-scheme:dark;--bg:#080b14;--card:#12192a;--line:rgba(255,255,255,.09);--text:#f6f8ff;--muted:#9fa9bf;--cyan:#55d9ff;--blue:#6d7dff;--green:#59e1aa;--shadow:0 24px 70px rgba(0,0,0,.35);--radius:24px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;font-family:Inter,Pretendard,"Noto Sans KR",ui-sans-serif,system-ui,sans-serif;background:radial-gradient(900px 580px at 12% -8%,rgba(85,217,255,.17),transparent 62%),radial-gradient(900px 700px at 90% 8%,rgba(109,125,255,.16),transparent 64%),linear-gradient(180deg,#090d18 0%,var(--bg) 42%,#070a12 100%);color:var(--text);line-height:1.6}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.shell{width:min(1180px,calc(100% - 40px));margin:0 auto}.topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(8,11,20,.72);border-bottom:1px solid rgba(255,255,255,.06)}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}.mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(85,217,255,.25),rgba(109,125,255,.28));border:1px solid rgba(121,214,255,.34)}.links{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:14px}.links a:hover{color:#fff}.hero{padding:104px 0 78px;text-align:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:7px 12px;border:1px solid rgba(111,203,255,.22);border-radius:999px;background:rgba(85,217,255,.07);color:#b9edff;font-size:13px;font-weight:700}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 16px rgba(89,225,170,.8)}h1{margin:0 auto;max-width:930px;font-size:clamp(44px,7vw,82px);line-height:1.04;letter-spacing:-.055em;font-weight:900}.gradient{background:linear-gradient(90deg,#ecfbff 5%,#80e3ff 40%,#8997ff 72%,#c0a7ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:780px;margin:26px auto 0;color:#aab4ca;font-size:clamp(17px,2.2vw,21px);line-height:1.75}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:13px;border:1px solid var(--line);font-size:14px;font-weight:800;transition:.18s ease}.btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.18)}.primary{background:linear-gradient(135deg,#5fdcff,#737eff 72%);color:#07111f;border:0;box-shadow:0 12px 32px rgba(86,157,255,.2)}.secondary{background:rgba(255,255,255,.045);color:#e9edfa}.stats{margin-top:58px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:840px;margin-left:auto;margin-right:auto}.stat{padding:18px 16px;border-radius:18px;border:1px solid var(--line);background:rgba(16,22,37,.6)}.stat strong{display:block;font-size:17px}.stat span{display:block;margin-top:3px;font-size:13px;color:var(--muted)}section{padding:72px 0}.section-head{margin-bottom:30px}.kicker{color:#79dbff;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h2{margin:8px 0 0;font-size:clamp(30px,4vw,46px);line-height:1.18;letter-spacing:-.04em}.section-head p{max-width:740px;margin:13px 0 0;color:var(--muted);font-size:16px}.showcase{display:grid;grid-template-columns:1.18fr .82fr;gap:18px;align-items:start}.stack{display:grid;gap:18px}.shot{overflow:hidden;border-radius:var(--radius);border:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,rgba(31,40,65,.82),rgba(14,19,32,.92));box-shadow:var(--shadow);margin:0}.shot img{width:100%;height:auto;background:#252934}.caption{padding:16px 18px 18px}.caption strong{font-size:15px}.caption p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.55}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{min-height:210px;padding:22px;border-radius:21px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(22,30,51,.78),rgba(13,18,31,.76))}.icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(85,217,255,.09);border:1px solid rgba(85,217,255,.16);font-size:18px}.feature h3{margin:17px 0 7px;font-size:18px}.feature p{margin:0;color:var(--muted);font-size:14px}.commands{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;padding:4px 7px;border-radius:7px;color:#dce8ff;border:1px solid rgba(144,158,255,.16);background:rgba(106,120,255,.09)}.flow{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(135deg,rgba(20,28,47,.88),rgba(13,19,33,.72));box-shadow:var(--shadow)}.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow-item{position:relative;padding:18px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}.flow-item:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:#63708c;z-index:2}.flow-item strong{display:block;font-size:14px}.flow-item span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tech span{padding:8px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#d8e1f5;font-size:13px}.cta{padding:32px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,rgba(23,31,52,.92),rgba(10,14,24,.86));box-shadow:var(--shadow)}.cta p{color:var(--muted);max-width:760px}footer{padding:0 0 48px;color:#8e98af;font-size:13px}@media(max-width:980px){.showcase,.features{grid-template-columns:1fr}.flow-grid{grid-template-columns:repeat(2,1fr)}.flow-item:nth-child(2)::after{display:none}}@media(max-width:720px){.nav{padding:14px 0;align-items:flex-start;flex-direction:column}.links{gap:14px;flex-wrap:wrap}.stats,.flow-grid{grid-template-columns:1fr}.flow-item::after{display:none}.hero{padding:76px 0 50px}section{padding:56px 0}.shell{width:min(100% - 28px,1180px)}}
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <article class="card">
-      <h1>Yummi Feature Summary</h1>
-      <p>This repository contains a Discord bot primarily designed for League of Legends stats/nickname management, recruitment posts, and message pinning.</p>    
-    </article>
-
-    <section class="card">
-      <h2>1. Key Features</h2>
-      <div class="feature-group">
-        <h3>1.1 League of Legends Info Lookup</h3>
-        <ul>
-          <li><strong>/info</strong>: Displays summoner tier (Solo/Flex), level, and top champion mastery information.</li>
-          <li><strong>/mastery</strong>: Shows the champion mastery list and top data for a user or a specific LoL nickname using a paginated UI.</li>
-          <li><strong>/rotation</strong>: Generates and sends an image of the current week's free champion rotation.</li>
-        </ul>
-      </div>
-
-      <div class="feature-group">
-        <h3>1.2 Nickname Management</h3>
-        <ul>
-          <li><strong>/set_nickname</strong>: Registers a Riot nickname and saves it to the database.</li>
-          <li><strong>/delete_nickname</strong>: Deletes your own registered nickname.</li>
-          <li><strong>/nickname</strong>: Look up your own or another user's registered LoL nickname.</li>
-          <li><strong>/secret_nick</strong>: Sends the lookup result as an ephemeral message (visible only to you).</li>
-          <li><strong>/vc_nicknames</strong>: Checks the registered nicknames of all members currently in the voice channel at once.</li>
-        </ul>
-      </div>
-
-      <div class="feature-group">
-        <h3>1.3 Chat & Recruitment Helper</h3>
-        <ul>
-          <li><strong>/aram</strong>: Generates a recruitment message for ARAM game members.</li>
-          <li>Recruitment messages include interactive buttons for <strong>Join</strong>, <strong>Reserve</strong>, <strong>Cancel Join</strong>, <strong>Cancel Recruitment</strong>, and <strong>Bump</strong>.</li>
-        </ul>
-      </div>
-
-      <div class="feature-group">
-        <h3>1.4 Message Pinning</h3>
-        <ul>
-          <li><strong>!pin</strong>: A feature that pins a replied message and "bumps" it by sending a copy as a new message.</li>
-          <li><strong>!unpin</strong>: Disables the pinned status of a message.</li>
-          <li>The pinning feature copies the original message content, embeds, and buttons to maintain a pinned replica.</li>
-        </ul>
-      </div>
-
-      <div class="feature-group">
-        <h3>1.5 Admin & Backup</h3>
-        <ul>
-          <li><strong>Bot Lock</strong> (<strong>/bot_lock</strong>): Allows administrators to lock or unlock bot usage.</li>
-          <li><strong>reload</strong>, <strong>reloadall</strong>: Admin-only commands to reload bot extension modules.</li>
-          <li>The log and backup module backs up the DB to an Excel file every hour and records member counts per server.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>2. Core Data Storage</h2>
-      <ul>
-        <li><strong>nicknames</strong> table: Discord User ID, Riot Nickname, Tier, and Last Update Time.</li>
-        <li><strong>teams</strong> table: Server ID, Team Name, Leader ID, Member List (JSON), Team Status, Creation Time, and Voice Channel ID.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>3. Requirements</h2>
-      <ul>
-        <li>Python 3.x</li>
-        <li>discord.py and related extensions</li>
-        <li>aiohttp, Pillow, openpyxl, python-dotenv, etc.</li>
-        <li>Environment variables such as <code>DISCORD_TOKEN</code>, <code>RIOT_API_KEY</code>, <code>ADMIN_ID</code>, and <code>ALLOWED_GUILD_IDS</code> must be configured in a <strong>.env</strong> file.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>4. How to Run</h2>
-      <p>Run the bot using <code>python main.py</code>.</p>
-      <p><strong>main.py</strong> initializes the bot and automatically loads modules from directories.</p>
-    </section>
-  </div>
+<header class="topbar"><div class="shell nav"><a class="brand" href="#top"><span class="mark">🐱</span><span>Yummi</span></a><nav class="links"><a href="#screenshots">화면</a><a href="#features">기능</a><a href="#architecture">구조</a><a href="https://github.com/YummiLabs/Yummi" target="_blank" rel="noreferrer">GitHub</a></nav></div></header>
+<main id="top">
+<section class="hero"><div class="shell"><div class="eyebrow"><span class="dot"></span> Discord · Web · LCU Agent</div><h1><span class="gradient">Yummi</span>는<br>LoL Discord 서버를 위한 올인원 도구입니다.</h1><p>전적 조회, Riot 프로필, 모집·내전 운영, 대회 관리, 그리고 Windows 로컬 League Client와 연동되는 LCU Agent까지 하나의 흐름으로 연결하는 Yummi 프로젝트입니다.</p><div class="actions"><a class="btn primary" href="https://github.com/YummiLabs/Yummi" target="_blank" rel="noreferrer">YummiLabs/Yummi →</a><a class="btn secondary" href="#screenshots">실제 화면 보기</a></div><div class="stats"><div class="stat"><strong>Discord 중심</strong><span>모집·전적·내전·커뮤니티</span></div><div class="stat"><strong>Web 운영</strong><span>내전·대회·기록·랭킹 관리</span></div><div class="stat"><strong>LCU 연동</strong><span>로컬 Agent로 League Client 연결</span></div></div></div></section>
+<section id="screenshots"><div class="shell"><div class="section-head"><div class="kicker">Screenshots</div><h2>현재 Yummi의 실제 화면</h2><p>최신 Discord 화면을 기준으로 모집, 전적, 사용자 정보 흐름을 한눈에 볼 수 있습니다.</p></div><div class="showcase"><figure class="shot"><img src="assets/yummi-recruit.webp" alt="Yummi Discord 내전 모집 화면" loading="lazy"><figcaption class="caption"><strong>내전 모집</strong><p>시간, 규칙, 참가자·예비 인원, 통화방과 운영 버튼을 하나의 Discord 패널에서 관리합니다.</p></figcaption></figure><div class="stack"><figure class="shot"><img src="assets/yummi-match-history.webp" alt="Yummi Discord 전적 조회 화면" loading="lazy"><figcaption class="caption"><strong>최근 전적</strong><p>챔피언, KDA, 아이템, 팀 정보와 경기 선택 UI를 포함한 전적 화면입니다.</p></figcaption></figure><figure class="shot"><img src="assets/yummi-profile.webp" alt="Yummi Discord 사용자 정보 화면" loading="lazy"><figcaption class="caption"><strong>사용자 정보</strong><p>솔로·자유 랭크, 시즌 최고 티어, 모스트 챔피언과 최근 전적을 빠르게 확인합니다.</p></figcaption></figure></div></div></div></section>
+<section id="features"><div class="shell"><div class="section-head"><div class="kicker">Features</div><h2>Discord에서 시작해 웹과 LCU까지</h2><p>기능을 따로 분리하기보다 Discord의 모집과 전적 흐름을 중심으로 웹 관리 기능과 League Client 연동을 연결합니다.</p></div><div class="features"><article class="feature"><div class="icon">🔎</div><h3>전적 · Riot 프로필</h3><p>Riot ID, 현재·최대 티어, 최근 경기, 숙련도와 포지션 정보를 한 번에 조회합니다.</p><div class="commands"><code>/정보</code><code>/전적</code><code>/프로필</code><code>/숙련도</code></div></article><article class="feature"><div class="icon">⚔️</div><h3>모집 · 내전</h3><p>증바람, 자랭, 5:5 내전 모집과 참가·취소·예비 인원·음성 채널 흐름을 관리합니다.</p><div class="commands"><code>/증바람</code><code>/자랭</code><code>/내전</code><code>/모집</code></div></article><article class="feature"><div class="icon">⚖️</div><h3>팀 배정 · 밸런싱</h3><p>티어, 포지션, 저장된 참가자 정보를 바탕으로 팀을 배정하고 웹에서 수동 조정과 결과 관리를 이어갑니다.</p></article><article class="feature"><div class="icon">🏆</div><h3>대회 · 기록</h3><p>참가 신청, 체크인, 팀과 시드, 대진, 경기 결과와 라이브 운영 기록을 웹에서 관리합니다.</p></article><article class="feature"><div class="icon">🎮</div><h3>LCU Agent</h3><p>Windows PC에서 League Client와 연결해 로비·파티 상태, 참가자 초대와 일부 클라이언트 작업을 이어줍니다.</p><div class="commands"><code>/lcu</code><code>/다운로드</code></div></article><article class="feature"><div class="icon">✨</div><h3>커뮤니티 기능</h3><p>LCK 일정·예측, 출석·포인트, 퀴즈, 음성·사운드 기능 등 서버 운영에 필요한 도구를 함께 제공합니다.</p><div class="commands"><code>/퀴즈</code><code>/달력</code><code>/출석</code><code>/랭킹</code></div></article></div></div></section>
+<section id="architecture"><div class="shell"><div class="section-head"><div class="kicker">Architecture</div><h2>한 프로젝트 안에서 연결되는 구조</h2><p>Discord와 브라우저가 사용자 접점이 되고, Bot/Web/API가 공유 상태를 처리하며 LCU Agent는 사용자의 PC에서 로컬 League Client와 연결됩니다.</p></div><div class="flow"><div class="flow-grid"><div class="flow-item"><strong>Discord / Browser</strong><span>사용자 입력과 실시간 UI</span></div><div class="flow-item"><strong>Yummi Bot / Web</strong><span>모집·전적·내전·대회 UX</span></div><div class="flow-item"><strong>API / Redis / DB</strong><span>공유 상태와 영속 데이터</span></div><div class="flow-item"><strong>LCU Relay ↔ Agent</strong><span>로컬 League Client 연동</span></div></div><div class="tech"><span>Python</span><span>TypeScript</span><span>Rust</span><span>Tauri</span><span>PostgreSQL</span><span>Redis</span><span>Discord API</span><span>Riot API / LCU</span></div></div></div></section>
+<section><div class="shell"><div class="cta"><h2>Yummi는 계속 확장 중입니다.</h2><p>Bot, Web, API, LCU Agent를 하나의 프로젝트에서 함께 개발하고 있습니다. 최신 구현과 변경 이력은 GitHub 저장소에서 확인할 수 있습니다.</p><div class="actions"><a class="btn primary" href="https://github.com/YummiLabs/Yummi" target="_blank" rel="noreferrer">GitHub에서 보기 →</a><a class="btn secondary" href="#screenshots">화면 다시 보기</a></div></div></div></section>
+</main>
+<footer><div class="shell"><p>Updated September 2026 · Yummi is an independent project and is not endorsed by Riot Games.</p></div></footer>
 </body>
 </html>
